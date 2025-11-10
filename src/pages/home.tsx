@@ -24,7 +24,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white">
-      <Header title="My Libraries" />
+      <Header title="Saviee Libraries" />
 
       {/* Hero Section */}
       <section className="text-center py-20 px-6">
@@ -34,7 +34,7 @@ export default function HomePage() {
           </div>
         </div>
         <h2 className="text-5xl md:text-6xl font-bold mb-4 text-white">
-          Build Faster with My Libraries
+          Build Faster with Saviee Libraries
         </h2>
         <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
           Explore and use lightweight, easy-to-integrate React libraries that
