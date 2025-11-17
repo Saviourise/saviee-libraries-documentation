@@ -12,7 +12,14 @@ const libraries = [
     link: "/libraries/use-timed-flow",
     icon: "⚡",
   },
-  // future libraries can be added here
+  {
+    name: "PDF to Link",
+    description: "Convert PDF files to shareable links quickly and easily.",
+    version: "Tool",
+    link: "https://pdf-to-link.pages.dev/",
+    icon: "📄",
+  },
+  // future libraries, hooks, and tools can be added here
 ];
 
 export default function HomePage() {
@@ -34,11 +41,11 @@ export default function HomePage() {
           </div>
         </div>
         <h2 className="text-5xl md:text-6xl font-bold mb-4 text-white">
-          Build Faster with Saviee Libraries
+          Build Faster with Saviee Libraries &amp; Tools
         </h2>
         <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
-          Explore and use lightweight, easy-to-integrate React libraries that
-          simplify common tasks.
+          Explore and use lightweight libraries, powerful React hooks, and
+          useful tools that simplify common tasks.
         </p>
 
         {/* Installation Command Box */}
@@ -70,37 +77,67 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* Libraries Section */}
+      {/* Libraries, Hooks & Tools Section */}
       <section className="px-6 py-16 max-w-7xl mx-auto">
         <h3 className="text-3xl font-bold mb-3 text-center text-white">
-          Have you ever needed simple, powerful React hooks?
+          Have you ever needed simple libraries, powerful React hooks, or useful
+          tools?
         </h3>
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          Me too! These libraries make building React applications faster and
-          more enjoyable.
+          Me too! These libraries, hooks, and tools make building React
+          applications faster and more enjoyable.
         </p>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {libraries.map((lib) => (
-            <Link
-              key={lib.name}
-              to={lib.link}
-              className="p-6 bg-[#1A1A1A] rounded-lg border border-gray-800 hover:border-gray-700 transition-all hover:shadow-lg group"
-            >
-              <div className="text-3xl mb-4">{lib.icon}</div>
-              <h4 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">
-                {lib.name}
-              </h4>
-              <p className="text-gray-400 mb-4">{lib.description}</p>
-              <div className="flex items-center justify-between">
-                <span className="inline-block px-3 py-1 rounded-full text-sm bg-gray-800 text-gray-300">
-                  {lib.version}
-                </span>
-                <span className="text-purple-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more →
-                </span>
-              </div>
-            </Link>
-          ))}
+          {libraries.map((lib) => {
+            const isExternalLink =
+              lib.link.startsWith("http://") || lib.link.startsWith("https://");
+            const linkClassName =
+              "p-6 bg-[#1A1A1A] rounded-lg border border-gray-800 hover:border-gray-700 transition-all hover:shadow-lg group";
+
+            if (isExternalLink) {
+              return (
+                <a
+                  key={lib.name}
+                  href={lib.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClassName}
+                >
+                  <div className="text-3xl mb-4">{lib.icon}</div>
+                  <h4 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">
+                    {lib.name}
+                  </h4>
+                  <p className="text-gray-400 mb-4">{lib.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-block px-3 py-1 rounded-full text-sm bg-gray-800 text-gray-300">
+                      {lib.version}
+                    </span>
+                    <span className="text-purple-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                      Visit website →
+                    </span>
+                  </div>
+                </a>
+              );
+            }
+
+            return (
+              <Link key={lib.name} to={lib.link} className={linkClassName}>
+                <div className="text-3xl mb-4">{lib.icon}</div>
+                <h4 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">
+                  {lib.name}
+                </h4>
+                <p className="text-gray-400 mb-4">{lib.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="inline-block px-3 py-1 rounded-full text-sm bg-gray-800 text-gray-300">
+                    {lib.version}
+                  </span>
+                  <span className="text-purple-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
